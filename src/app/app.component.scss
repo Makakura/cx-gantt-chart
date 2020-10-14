@@ -1,0 +1,22 @@
+.page-container {
+  margin: 50px;
+  .cx-gantt-chart-header {
+    .gantt-chart-types {
+      display: flex;
+      padding-bottom: 60px;
+      .gantt-chart-type-item {
+        display: flex;
+        margin-right: 76px;
+        align-items: center;
+        white-space: nowrap;
+        &__square {
+          width: 24px;
+          height: 24px;
+          margin-right: 16px;
+          border-radius: 3px;
+          flex-shrink: 0;
+        }
+      }
+    }
+  }
+}

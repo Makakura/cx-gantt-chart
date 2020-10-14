@@ -1,0 +1,25 @@
+<div class="cx-gantt-timeline">
+  <ng-container *ngFor="let year of years; let isLastYear = last">
+    <div class="cx-gantt-timeline-year-container">
+      <div class="cx-gantt-timeline-year">
+        <div class="cx-gantt-timeline-year__text">{{year}}</div>
+        <div class="cx-gantt-timeline-months">
+          <div class="cx-gantt-timeline-months__item"></div>
+          <ng-container *ngIf="!isLastYear">
+            <div class="cx-gantt-timeline-months__item"></div>
+            <div class="cx-gantt-timeline-months__item"></div>
+            <div class="cx-gantt-timeline-months__item"></div>
+            <div class="cx-gantt-timeline-months__item"></div>
+            <div class="cx-gantt-timeline-months__item"></div>
+            <div class="cx-gantt-timeline-months__item"></div>
+            <div class="cx-gantt-timeline-months__item"></div>
+            <div class="cx-gantt-timeline-months__item"></div>
+            <div class="cx-gantt-timeline-months__item"></div>
+            <div class="cx-gantt-timeline-months__item"></div>
+          </ng-container>
+        </div>
+        <div class="cx-gantt-timeline-year__line"></div>
+      </div>
+    </div>
+  </ng-container>
+</div>

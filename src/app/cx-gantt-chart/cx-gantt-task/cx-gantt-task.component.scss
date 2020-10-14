@@ -1,0 +1,45 @@
+:host {
+  display: block;
+}
+.cx-gantt-task {
+  display: flex;
+  align-items: center;
+  background: #7BDEAA;
+  border-radius: 5px;
+  padding: 8px 16px;
+  padding-left: 33px;
+  color: #fff;
+  line-height: 24px;
+  position: relative;
+  overflow: hidden;
+  &__indicator {
+    width: 17px;
+    height: 100%;
+    background: #8583FF;
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+  &__title {
+    font-weight: 500;
+    font-size: 16px;
+    white-space: nowrap;
+    text-transform: capitalize;
+  }
+  &__spacer {
+    width: 100%;
+  }
+
+  .cx-gantt-task-content {
+    font-size: 16px;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    &__icon {
+      margin-right: 8px;
+    }
+  }
+  &:hover {
+    filter: brightness(105%);
+  }
+}
