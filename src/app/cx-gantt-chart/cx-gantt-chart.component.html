@@ -1,21 +1,27 @@
 <div class="cx-gantt-chart-container">
-  <div class="cx-gantt-chart-header-container">
-    <ng-content select="cx-gantt-chart-header"></ng-content>
-  </div>
-  <div class="cx-gantt-chart-content">
-    <cx-gantt-scrubber></cx-gantt-scrubber>
-    <div class="cx-gantt-chart">
-      <div #cxGantChartViewer class="cx-gantt-chart-viewer">
-        <cx-gantt-timeline #cxGanttChartTimeline [minYear]="data.minYear" [maxYear]="data.maxYear"></cx-gantt-timeline>
-        <div #cxGanttChartTasksList class="cx-gantt-chart-tasks">
-          <ng-container *ngFor="let taskRenderer of taskRenderDataList">
-            <cx-gantt-task [data]="taskRenderer.data" [style.margin-left]="taskRenderer.offset + 'px'" [style.width]="taskRenderer.width + 'px'"></cx-gantt-task>
-          </ng-container>
-          <!-- <cx-gantt-task [data]="taskData" style="margin-right: 400px"></cx-gantt-task>
+	<div class="cx-gantt-chart-header-container">
+		<ng-content select="cx-gantt-chart-header"></ng-content>
+	</div>
+	<div class="cx-gantt-chart-content">
+		<cx-gantt-scrubber></cx-gantt-scrubber>
+		<div #cxGantChartScrollDiv class="cx-gantt-chart" (scroll)="onScroll()">
+			<div #cxGantChartViewer class="cx-gantt-chart-viewer">
+				<cx-gantt-timeline #cxGanttChartTimeline [minYear]="data.minYear" [maxYear]="data.maxYear">
+				</cx-gantt-timeline>
+				<div #cxGanttChartTasksList class="cx-gantt-chart-tasks">
+					<ng-container *ngFor="let taskRenderer of taskRenderDataList">
+						<cx-gantt-task [data]="taskRenderer.data" [style.margin-left]="taskRenderer.offset + 'px'"
+							[style.width]="taskRenderer.width + 'px'"></cx-gantt-task>
+					</ng-container>
+					<!-- <cx-gantt-task [data]="taskData" style="margin-right: 400px"></cx-gantt-task>
           <cx-gantt-task [data]="taskData1"  style="margin-left: 200px; margin-right: 200px"></cx-gantt-task>
           <cx-gantt-task [data]="taskData2"  style="margin-left: 409px"></cx-gantt-task> -->
-        </div>
-      </div>
-    </div>
-  </div>
+				</div>
+			</div>
+			<div class="cx-gantt-chart-controller">
+				<button (click)="onPrev()" [disabled]="!canPrev">Prev</button>
+				<button (click)="onNext()" [disabled]="!canNext">Next</button>
+			</div>
+		</div>
+	</div>
 </div>
