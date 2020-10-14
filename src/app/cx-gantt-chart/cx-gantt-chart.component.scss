@@ -7,6 +7,7 @@
     .cx-gantt-chart {
       overflow-x: auto;
       overflow-y: hidden;
+      scroll-behavior: smooth;
       .cx-gantt-chart-viewer {
         height: 100%;
         position: relative;
@@ -21,23 +22,20 @@
           }
         }
       }
-      &::-webkit-scrollbar-track
-      {
+      &::-webkit-scrollbar-track {
         border-radius: 5px;
         background-color: #f3f3f3;
       }
 
-      &::-webkit-scrollbar
-      {
+      &::-webkit-scrollbar {
         height: 16px;
         background-color: #f3f3f3;
       }
 
-      &::-webkit-scrollbar-thumb
-      {
+      &::-webkit-scrollbar-thumb {
         border-radius: 5px;
-        background-color: #D8DCE6;
+        background-color: #d8dce6;
       }
-    } 
+    }
   }
 }

@@ -31,7 +31,7 @@ export class CxGanttChartComponent implements OnInit, AfterViewInit {
   taskRenderDataList: CxGanttTaskRenderModel[] = [];
   private yearStep: number = 409; // Width of a step of year, default 409px
   private currentYear: number = 0;
-
+  private isDragging = false;
   constructor() {}
 
   ngOnInit() {
@@ -44,13 +44,27 @@ export class CxGanttChartComponent implements OnInit, AfterViewInit {
     this.setHeightForContentViewer();
   }
 
-  onScroll() {
-    const currentScrollLeft = this.cxGantChartScrollDiv.nativeElement
-      .scrollLeft;
+  onScroll(eventData) {
+    const offsetValue = 10;
+
+    this.cxGantChartScrollDiv.nativeElement.scrollLeft + offsetValue;
+    const currentScrollLeft =
+      this.cxGantChartScrollDiv.nativeElement.scrollLeft + offsetValue;
     const currentStep = currentScrollLeft / this.yearStep;
     const currentStepFloored = Math.floor(currentStep);
-    this.currentYear = this.data.minYear + currentStepFloored;
+    const currentYear = this.data.minYear + currentStepFloored;
+    if (this.isDragging) {
+      this.currentYear = currentYear;
+    }
     console.log(this.currentYear);
+  }
+
+  onMouseDown() {
+    this.isDragging = true;
+  }
+
+  onMouseUp() {
+    this.isDragging = false;
   }
 
   onPrev() {
@@ -66,7 +80,7 @@ export class CxGanttChartComponent implements OnInit, AfterViewInit {
   }
 
   get canNext(): boolean {
-    return this.currentYear > this.data.maxYear;
+    return this.currentYear < this.data.maxYear;
   }
 
   private initData() {
@@ -78,7 +92,14 @@ export class CxGanttChartComponent implements OnInit, AfterViewInit {
       Math.max(year, this.data.minYear),
       this.data.maxYear
     );
+    this.updateScrollToCurrentYear();
     console.log(this.currentYear);
+  }
+
+  private updateScrollToCurrentYear() {
+    const currentStep = this.currentYear - this.data.minYear;
+    const scrollLeft = currentStep * this.yearStep;
+    this.cxGantChartScrollDiv.nativeElement.scrollLeft = scrollLeft;
   }
 
   private setHeightForContentViewer(): void {

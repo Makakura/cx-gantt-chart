@@ -4,7 +4,8 @@
 	</div>
 	<div class="cx-gantt-chart-content">
 		<cx-gantt-scrubber></cx-gantt-scrubber>
-		<div #cxGantChartScrollDiv class="cx-gantt-chart" (scroll)="onScroll()">
+		<div #cxGantChartScrollDiv class="cx-gantt-chart" (scroll)="onScroll($event)" (mousedown)="onMouseDown()"
+			(mouseup)="onMouseUp()">
 			<div #cxGantChartViewer class="cx-gantt-chart-viewer">
 				<cx-gantt-timeline #cxGanttChartTimeline [minYear]="data.minYear" [maxYear]="data.maxYear">
 				</cx-gantt-timeline>
@@ -18,10 +19,10 @@
           <cx-gantt-task [data]="taskData2"  style="margin-left: 409px"></cx-gantt-task> -->
 				</div>
 			</div>
-			<div class="cx-gantt-chart-controller">
-				<button (click)="onPrev()" [disabled]="!canPrev">Prev</button>
-				<button (click)="onNext()" [disabled]="!canNext">Next</button>
-			</div>
+		</div>
+		<div class="cx-gantt-chart-controller">
+			<button (click)="onPrev()" [disabled]="!canPrev">Prev</button>
+			<button (click)="onNext()" [disabled]="!canNext">Next</button>
 		</div>
 	</div>
 </div>
